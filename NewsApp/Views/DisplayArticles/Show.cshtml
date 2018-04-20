@@ -1,0 +1,43 @@
+﻿@model IEnumerable<NewsApp.Models.DisplayArticle>
+
+@{
+    ViewBag.Title = "Show";
+}
+<br />
+Kategorie:
+<button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Show", "DisplayArticles", new { category = "top" })'">Top</button>
+<button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Show", "DisplayArticles", new { category = "business" })'">Biznes</button>
+<button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Show", "DisplayArticles", new { category = "entertainment" })'">Rozrywka</button>
+<button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Show", "DisplayArticles", new { category = "health" })'">Zdrowie</button>
+<button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Show", "DisplayArticles", new { category = "science" })'">Nauka</button>
+<button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Show", "DisplayArticles", new { category = "sports" })'">Sport</button>
+<button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Show", "DisplayArticles", new { category = "technology" })'">Technologia</button>
+<br /><br />
+
+<table class="table table-hover">
+    @foreach (var item in Model)
+    {
+        <tr class="table-primary">
+            <td style="float:none">
+                @if (!String.IsNullOrEmpty(item.urlToImage))
+                {
+                    <a href="@Html.DisplayFor(modelItem => item.url)">
+                        <img src="@Url.Content(item.urlToImage)" alt="" width="150" height="100" />
+                    </a>
+                }
+                @if (item.urlToImage == null)
+                {
+                    @Html.DisplayFor(modelItem => item.urlToImage)
+                }
+            </td>
+            <td>
+                <a href="@Html.DisplayFor(modelItem => item.url)">
+                    <p style=" color:black; font-size: 18px;"><b>@Html.DisplayFor(modelItem => item.title)</b></p>
+                    <p style=" color:black; font-size: 15px;">@Html.DisplayFor(modelItem => item.description)</p>
+                </a>
+                <p style="font-size: 10px;">Źródło: @Html.DisplayFor(modelItem => item.source)</p>
+            </td>
+        </tr>
+    }
+</table>
+

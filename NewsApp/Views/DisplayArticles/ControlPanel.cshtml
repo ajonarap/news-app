@@ -1,0 +1,64 @@
+﻿@model IEnumerable<NewsApp.Models.DisplayArticle>
+
+@{
+    ViewBag.Title = "ControlPanel";
+}
+
+
+<br />
+<h2>Panel administracyjny</h2>
+<br />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("button").click(function () {
+            $("#tblMain").show();
+            $("#idB").hide();
+
+        });
+    });
+</script>
+
+<center><img id="tblMain" style="display: none;" src="@Url.Content("~/Content/Images/load.gif")" width="120" height="120" /></center>
+
+@if (@Request.Params["information"] == null && @Request.Params["category"] != null)
+{
+    <div class="alert alert-dismissible alert-info" id="idB">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+
+
+       Zaktualizowano kategorię: <strong>@Request.Params["category"]</strong>
+    </div>
+}
+@if (@Request.Params["information"] != null && @Request.Params["category"] == null)
+{
+    <div class="alert alert-dismissible alert-info" id="idB">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>@Request.Params["information"]</strong>
+    </div>
+}
+<center><img id="tblMain" style="display: none;" src="@Url.Content("~/Content/Images/load.gif")" /></center>
+<div class="card border-primary mb-3" style="max-width: 200rem;">
+    <div class="card-header">Zaktualizuj</div>
+    <div class="card-body">
+        <button type="button" id="btn" class="btn btn-primary" onclick="location.href='@Url.Action("UpdateDatabase", "DisplayArticles")'">Wszystko</button>
+        <br><br><p class="card-title">pojedynczą kategorię:</p>
+        <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("ControlPanel", "DisplayArticles", new { category = "top" })'">Top</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("ControlPanel", "DisplayArticles", new { category = "business" })'">Biznes</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("ControlPanel", "DisplayArticles", new { category = "entertainment" })'">Rozrywka</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("ControlPanel", "DisplayArticles", new { category = "health" })'">Zdrowie</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("ControlPanel", "DisplayArticles", new { category = "science" })'">Nauka</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("ControlPanel", "DisplayArticles", new { category = "sports" })'">Sport</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("ControlPanel", "DisplayArticles", new { category = "technology" })'">Technologia</button>
+    </div>
+</div>
+
+<div class="card border-primary mb-3" style="max-width: 200rem;">
+    <div class="card-header">Usuń</div>
+    <div class="card-body">
+        <button type="button" class="btn btn-primary" id="btnClear" onclick="location.href='@Url.Action("ClearDatabase", "DisplayArticles")'">Wszystko</button>
+    </div>
+</div>
+
+

@@ -1,0 +1,24 @@
+﻿@model IEnumerable<NewsApp.Models.Article>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<table>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.url)
+            </td>
+        </tr>
+    }
+    <tr>
+
+    </tr>
+</table>
+<p>@Html.DisplayFor(model=> model)</p>

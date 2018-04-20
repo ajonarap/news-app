@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<br />
+<div class="jumbotron">
+    <h1>News</h1>
+    <p class="lead">Chcesz poznać najnowsze wiadomości? Nie masz czasu aby przeglądać wiele stron w internecie aby znaleźć kilka ciekawych artykułów? Rozwiązaniem jest News -
+     najlepsza aplikacja do agregowania najnowszych informacji w Polsce! </p>
+    <p><a class="btn btn-primary btn-lg" href="@Url.Action(actionName: "Register", controllerName: "Account", routeValues: null)"><span>Zarejestruj się &raquo;</span></a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>News v1.0</h2>
+        <p>Z dumą możemy ogłosić, że aplikacja została uruchomiona i jest już dostępna dla wszystkich</p>
+    </div>
+
+    <div class="col-md-4">
+        <h2>Pierwsze kroki</h2>
+        <p>
+            Nie wiesz od czego zacząć? Przejdź do zakładki informacje
+        </p>
+        <p> <a class="btn btn-outline-primary" href="@Url.Action("About", "Home")"><span>Informacje &raquo;</span></a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Kontakt</h2>
+        <p>Masz uwagi? Skontaktuj się z autorem i opisz swój problem</p>
+        <p> <a class="btn btn-outline-primary" href="@Url.Action("Contact", "Home")"><span>Kontakt &raquo;</span></a></p>
+    </div>
+</div>
